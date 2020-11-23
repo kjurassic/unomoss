@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Plant from './components/Plant/Plant';
 import Profile from './components/Profile/Profile';
 import Greenhouse from './components/Greenhouse/Greenhouse';
+import SignupForm from './components/Login/SignupForm';
 
 import SearchPlant from './components/SearchPlant/SearchPlant';
 import logo from './assets/logo.png';
@@ -49,6 +50,9 @@ const App = () => {
           </Route>
           <Route path="/greenhouse">
             <Greenhouse />
+          </Route>
+          <Route path="/signup">
+            <SignupForm />
           </Route>
           <Route path="/">
             <Login />

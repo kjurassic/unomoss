@@ -22,6 +22,10 @@ const LoginForm = () => {
     setRedirect(<Redirect to="/greenhouse" />);
   }
 
+  const signUp = () => {
+    setRedirect(<Redirect to="/signup" />);
+  }
+
   //islogin if true
   //
   return (
@@ -65,7 +69,7 @@ const LoginForm = () => {
         <br></br>
         <p>
           Don't have an account?
-          <button id="signUpClick" onClick="handleClick">
+          <button id="signUpClick" onClick={signUp}>
             Sign up
           </button>
         </p>
