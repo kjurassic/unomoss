@@ -1,4 +1,4 @@
-const sequelize = require("sequelize");
+const sequelize = require('sequelize');
 
 const userPlants = (sequelize, DataTypes) => {
   const UserPlants = sequelize.define('userPlants', {
@@ -22,13 +22,13 @@ const userPlants = (sequelize, DataTypes) => {
     },
   });
 
-  UserPlants.associate = models => {
+  UserPlants.associate = (models) => {
     UserPlants.hasOne(models.PlantInfo);
     UserPlants.belongsTo(models.User);
-  }
+  };
 
   return UserPlants;
-}
+};
 
 // export default userPlants;
 module.exports = userPlants;

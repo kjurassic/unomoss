@@ -1,4 +1,4 @@
-const sequelize = require("sequelize");
+const sequelize = require('sequelize');
 
 const plantInfo = (sequelize, DataTypes) => {
   const PlantInfo = sequelize.define('plantInfo', {
@@ -6,7 +6,7 @@ const plantInfo = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     slug: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, //sequelize.STRING
     },
     scientificName: {
       type: DataTypes.STRING,
@@ -106,15 +106,15 @@ const plantInfo = (sequelize, DataTypes) => {
     },
     image: {
       type: DataTypes.STRING,
-    }
+    },
   });
 
-  PlantInfo.associate = models => {
+  PlantInfo.associate = (models) => {
     PlantInfo.belongsTo(models.UserPlants);
-  }
+  };
 
   return PlantInfo;
-}
+};
 
 // export default plantInfo;
 module.exports = plantInfo;

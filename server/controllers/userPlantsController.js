@@ -12,11 +12,11 @@ userPlantsController.createUserPlant = async (req, res, next) => {
     plantNickName: req.body.plantNickName,
     dateAcquired: req.body.dateAcquired,
     status: req.body.status,
-    plantID: req.body.plantID,
+    plantId: req.body.plantId,
     wateringFrequency: req.body.wateringFrequency,
     fertilizingFrequency: req.body.fertilizingFrequency,
     userId: req.body.userId,
-  })
+  });
   if (!createUserPlants) {
     return next({ message: 'Unable to create user plant.' });
   }
@@ -27,8 +27,8 @@ userPlantsController.createUserPlant = async (req, res, next) => {
 userPlantsController.getUserPlants = async (req, res, next) => {
   console.log('get user plant info');
   const findAllPlants = await db.UserPlants.findAll({
-    where: {userId: req.body.userId}
-  })
+    where: { userId: req.body.userId },
+  });
   if (findAllPlants.length === 0) {
     return next({ message: 'No plants found' });
   }
@@ -40,8 +40,8 @@ userPlantsController.getUserPlants = async (req, res, next) => {
 userPlantsController.getUserPlant = async (req, res, next) => {
   console.log('get user plant info');
   const findSpecificPlant = await db.UserPlants.findAll({
-    id: req.params.id,
-  })
+    where: { id: req.params.id },
+  });
   if (findSpecificPlant.length === 0) {
     return next({ message: 'Plant not found' });
   }
@@ -52,20 +52,23 @@ userPlantsController.getUserPlant = async (req, res, next) => {
 // find a user plant by the plant nickname and allow user to update information about the plant
 userPlantsController.updateUserPlant = async (req, res, next) => {
   console.log('update user plant info');
-  const updateUserPlants = await db.UserPlants.update({
-    plantNickname: req.body.plantNickname,
-    dateAcquired: req.body.dateAcquired,
-    status: req.body.status,
-    plantID: req.body.plantID,
-    wateringFrequency: req.body.wateringFrequency,
-    fertilizingFrequency: req.body.fertilizingFrequency,
-  }, {
-    where: {
-      id: req.body.id,
+  const updateUserPlants = await db.UserPlants.update(
+    {
+      plantNickname: req.body.plantNickname,
+      dateAcquired: req.body.dateAcquired,
+      status: req.body.status,
+      plantId: req.body.plantId,
+      wateringFrequency: req.body.wateringFrequency,
+      fertilizingFrequency: req.body.fertilizingFrequency,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
     }
-  })
+  );
   if (updateUserPlants[0] === 0) {
-    return next({ message: 'Nothing was updated.'})
+    return next({ message: 'Nothing was updated.' });
   }
   next();
 };
