@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 import Login from './components/Login/Login';
 import Plant from './components/Plant/Plant';
