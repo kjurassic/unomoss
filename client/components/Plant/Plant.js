@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Plant.scss';
 
 const Plant = (props) => {
-  console.log(props);
+  console.log('This is props', props);
   // state will be plant details
   // need to import plant img url somehow
   const [details, setDetails] = useState({
@@ -47,6 +47,7 @@ const Plant = (props) => {
     const plant = {};
     plant.commonName = props.location.userPlant.common_name;
     plant.scientificName = props.location.userPlant.scientific_name;
+    plant.image_url = props.location.userPlant.img_url;
 
     fetch('/api/plantInfo', {
       method: 'POST',
