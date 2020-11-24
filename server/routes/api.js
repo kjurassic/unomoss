@@ -11,7 +11,7 @@ const router = express.Router();
 console.log('api router');
 
 router.post('/', (req, res) => {
-  return res.status(200).json('ok');
+  return res.status(200).json('connected to api');
 });
 
 // USER ROUTES
@@ -30,7 +30,7 @@ router.post(
   cookieController.setSSIDCookie,
   (req, res) => {
     console.log('posting');
-    return res.status(200).json('ok');
+    return res.status(200).json('connected to user');
   }
 );
 
@@ -40,7 +40,7 @@ router.post(
   userController.verifyUser,
   cookieController.setSSIDCookie,
   (req, res) => {
-    return res.status(200).json('ok');
+    return res.status(200).json('connected to auth');
   }
 );
 // *************************************************************
@@ -60,21 +60,24 @@ router.get('/userplants/:id', userPlantsController.getUserPlant, (req, res) => {
 router.patch(
   'userplants/:id',
   userPlantsController.updateUserPlant,
-  (req, res) => {}
+  (req, res) => {
+    console.log('patching plant');
+    return res.status(200).json('This is the patch buddy.');
+  }
 );
 
 // // create user plant
 router.post('/userplants', userPlantsController.createUserPlant, (req, res) => {
   console.log('posting plant');
-  return res.status(200).json('ok');
+  return res.status(200).json('connected to userplants');
 });
 
 // Plant information routes
 // create plant info chart
 router.post('/plantInfo', plantInfoController.createPlant, (req, res) => {
   console.log('bringing in plant info');
-  return res.status(200).json('ok');
-})
+  return res.status(200).json('connected to plantinfo');
+});
 
 module.exports = router;
 
