@@ -22,9 +22,9 @@ function SearchBarInput() {
     const response = await axios.get(
       `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants/search?token=${apiKey}&q=${searchTerm}`
     );
+    let itemInfo = response.data.data;
     console.log('response object', response.data.data);
-    let ourSearchId = response.data.data.id;
-    console.log(ourSearchId);
+
     setPlants(response.data.data);
   };
 

@@ -74,9 +74,10 @@ const Plant = (props) => {
     console.log('component mounted');
     const fetchData = async (e) => {
       const response = await axios.get(
-        `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants/122263?token=PM3BHHsn1BYggmzwVudKgtHVtS5yD-szFUEvt-VQ06I&q=122263`
+        `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants/122263?token=PM3BHHsn1BYggmzwVudKgtHVtS5yD-szFUEvt-VQ06I&q=${plantId}`
       );
-      console.log('response object', response.data.data);
+      let itemInfo = response.data.data;
+      console.log('itemInfo', itemInfo);
 
       // setPlants(response.data.data);
     };
