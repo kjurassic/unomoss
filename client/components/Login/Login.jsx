@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import SignupForm from './SignupForm.js';
-import LoginForm from './LoginForm.js';
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import SignupForm from './SignupForm.jsx';
+import LoginForm from './LoginForm.jsx';
 
 const Login = () => {
   // const [isToggled, setToggled] = useState(false);
   // const toggleTrueFalse = () => setToggled(!isToggled);
-  const [newUser, setLoggedIn] = React.useState(false);
+  const [newUser, setLoggedIn] = useState(false);
   const handleClick = (e) => {
     setLoggedIn(!newUser);
   };
@@ -15,8 +15,8 @@ const Login = () => {
       {newUser ? (
         <SignupForm handleClick={handleClick} />
       ) : (
-        <LoginForm handleClick={handleClick} />
-      )}
+          <LoginForm handleClick={handleClick} />
+        )}
     </div>
   );
 };
