@@ -22,7 +22,9 @@ function SearchBarInput() {
     const response = await axios.get(
       `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants/search?token=${apiKey}&q=${searchTerm}`
     );
-    console.log(response.data.data);
+    console.log('response object', response.data.data);
+    let ourSearchId = response.data.data.id;
+    console.log(ourSearchId);
     setPlants(response.data.data);
   };
 
@@ -40,7 +42,7 @@ function SearchBarInput() {
   return (
     <div>
       <form>
-        <input type="text" name="searchTerm" onChange={handleOnChange} />
+        <input type='text' name='searchTerm' onChange={handleOnChange} />
         <button onClick={fetchData}> Submit</button>
         {/* <button onClick={handleClick}>TEST</button> */}
       </form>

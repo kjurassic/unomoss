@@ -5,6 +5,9 @@ const plantInfo = (sequelize, DataTypes) => {
     commonName: {
       type: DataTypes.STRING,
     },
+    plantId: {
+      type: DataTypes.INTEGER,
+    },
     slug: {
       type: DataTypes.STRING, //sequelize.STRING
     },
@@ -29,7 +32,7 @@ const plantInfo = (sequelize, DataTypes) => {
     familyCommonName: {
       type: DataTypes.STRING,
     },
-    genusID: {
+    genus_id: {
       type: DataTypes.INTEGER,
     },
     observations: {

@@ -35,16 +35,19 @@ const useSignUp = (validate) => {
     console.log(vals);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    fetch('api/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(vals),
-    });
-    history.push('/greenhouse');
+    const errors = validate(vals);
+    setErrors(errors);
+    if (!Object.keys(errors).length) {
+      fetch('api/user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(vals),
+      }).then(history.push('/greenhouse'));
+    }
     // try {
     //   const data = await fetch('/signup', {
     //     method: 'POST',

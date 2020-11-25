@@ -58,7 +58,8 @@ userController.verifyUser = async (req, res, next) => {
       console.log(result);
       return next();
     } else {
-      return res.redirect(301, '/login');
+      console.log('Password did not match');
+      res.redirect(301, '/signup');
     }
   });
 };

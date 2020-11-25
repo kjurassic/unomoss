@@ -18,7 +18,7 @@ plantInfoController.createPlant = async (req, res, next) => {
     status: req.body.status,
     rank: req.body.status,
     familyCommonName: req.body.familyCommonName,
-    genusID: req.body.genusId,
+    genus_id: req.body.genus_id,
     observations: req.body.observations,
     vegetable: req.body.vegetable,
     genus: req.body.genus,
@@ -43,6 +43,8 @@ plantInfoController.createPlant = async (req, res, next) => {
     growthMonths: req.body.growthMonths,
     bloomMonths: req.body.bloomMonths,
     fruitMonths: req.body.fruitMonths,
+    plantId: req.body.plantId,
+    image: req.body.image,
   });
   if (!createPlantInfos) {
     return next({ message: 'Unable to create plant table.' });

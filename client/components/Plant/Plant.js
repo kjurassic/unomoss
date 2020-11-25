@@ -1,12 +1,28 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react';
 import './Plant.scss';
+import axios from 'axios';
 
 const Plant = (props) => {
   console.log('This is props', props);
   // state will be plant details
   // need to import plant img url somehow
-  const { common_name, scientific_name, image_url } = props.location.userPlant;
+  const {
+    common_name,
+    scientific_name,
+    image_url,
+    id,
+    slug,
+    year,
+    bibliography,
+    author,
+    status,
+    rank,
+    family_common_name,
+    genus_id,
+    family,
+    genus,
+  } = props.location.userPlant;
   const [details, setDetails] = useState({
     commonName: common_name,
     scientificName: scientific_name,
@@ -19,6 +35,18 @@ const Plant = (props) => {
     maxPrecipitation: '',
     growthMonths: '',
     bloomMonths: '',
+    slug,
+    plantId: id,
+    year,
+    bibliography,
+    author,
+    status,
+    rank,
+    familyCommonName: family_common_name,
+    genus_id,
+    image: image_url,
+    family,
+    genus,
   });
   const {
     commonName,
@@ -32,14 +60,28 @@ const Plant = (props) => {
     maxPrecipitation,
     growthMonths,
     bloomMonths,
+    plantId,
   } = details;
 
-  const plantId = 'a number from url param - coming from plant item component';
+  // const plantId = 'a number from url param - coming from plant item component';
   // useEffect(() => {
   //   fetch(`/api/userplants/${plantId}`) // '/api/useplants/:id'
   //     .then((resp) => resp.json())
   //     .then((data) => setDetails(data));
-  // });
+  // },[]);
+
+  useEffect(() => {
+    console.log('component mounted');
+    const fetchData = async (e) => {
+      const response = await axios.get(
+        `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants/122263?token=PM3BHHsn1BYggmzwVudKgtHVtS5yD-szFUEvt-VQ06I&q=122263`
+      );
+      console.log('response object', response.data.data);
+
+      // setPlants(response.data.data);
+    };
+    fetchData();
+  }, []);
 
   // on mount: fetch plant details from database using passed in props as url search param? plant name??
 
@@ -71,7 +113,7 @@ const Plant = (props) => {
         <br></br>
         Flower Color:{flowerColor}
         <br></br>
-        Average Height: {avgHeight}
+        Average Height: {plantId}
         <br></br>
         Light: {light}
         <br></br>
