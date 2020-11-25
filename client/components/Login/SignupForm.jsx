@@ -123,7 +123,7 @@ const SignupForm = () => {
           {errors.password2 && <p>{errors.password2}</p>}
           <br></br>
           <br></br>
-          &nbsp;&nbsp;&nbsp;<button type="submit">
+          &nbsp;&nbsp;&nbsp;<button type="submit" name="btn">
             {/* ref={register} */}
             SIGN UP
           </button>

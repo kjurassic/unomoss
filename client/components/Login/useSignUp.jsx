@@ -17,7 +17,7 @@ const useSignUp = validate => {
   })
   const [errors, setErrors] = useState({})
   const [redirect, setRedirect] = useState('');
-  const history = useHistory();
+  //const history = useHistory();
   // create function that will grab the changes of the inputs
   const handleChange = event => {
     // destructure
